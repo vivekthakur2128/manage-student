@@ -29,7 +29,10 @@ function checkLoginCredentials(userId, password){
     .then(res => res.text())
     .then(data => {
       console.log(data);
-      if(!(data == "Logged in")){
+      if(data == "Logged in"){
+        window.location.href = "/manage-student/crud-students/crud-students.html";
+      }
+      else{
         alert(data);
         document.querySelector("form").reset();
       }    
