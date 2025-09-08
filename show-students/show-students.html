@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Students</title>
+    <link rel="stylesheet" href="../tailwind.min.css" />
+    <link rel="stylesheet" href="show-students.css" />
+  </head>
+  <body class="bg-gray-100 min-h-screen p-2">
+    <div class="text-center">
+      <form class="bg-gray-400 px-6 py-2 rounded-lg shadow-md w-full space-y-1">
+        <h1 class="font-semibold text-3xl rounded mb-2">
+          Show/Search Students
+        </h1>
+        <!-- radio buttons for choose show or search option -->
+        <div class="radio-buttons bg-blue-100 flex justify-around rounded">
+          <!-- Show radio button -->
+          <div class="flex items-center">
+            <input
+              id="show"
+              type="radio"
+              name="radioButton"
+              class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-400"
+            />
+            <label for="show" class="ml-2 text-gray-700"
+              >Show all students</label
+            >
+          </div>
+
+          <!-- Search radio button -->
+          <div class="flex items-center ml-5">
+            <input
+              id="search"
+              type="radio"
+              name="radioButton"
+              class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-400"
+            />
+            <label for="search" class="ml-2 text-gray-700">
+              Search students
+            </label>
+          </div>
+        </div>
+        <!-- read student -->
+        <div class="read-students bg-gray-400 space-x-1 flex flex-col sm:flex-row">
+          <div class="show-all-students disabled-div rounded bg-gray-200 py-1 sm:w-1/2 flex items-center justify-center">
+            <button
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded"
+            >
+              Show all students
+            </button>
+          </div>
+          <div class="or-div flex justify-center items-center">
+            <h1 class="font-semibold text-2xl">OR</h1>
+          </div>
+          <div class="search-by disabled-div bg-gray-200 sm:w-1/2 rounded">
+            <div class="search-by-buttons bg-gray-300 text-left">
+              <p>Search By :</p>
+              <div class="search-by-radio-buttons">
+                <label class="inline-flex items-center">
+                  <input
+                    type="radio"
+                    name="search-by"
+                    value="name"
+                    class="form-radio h-4 w-4"
+                  />
+                  <span class="ml-2 text-sm">Name</span>
+                </label>
+
+                <label class="inline-flex items-center">
+                  <input
+                    type="radio"
+                    name="search-by"
+                    value="fathername"
+                    class="form-radio h-4 w-4"
+                  />
+                  <span class="ml-2 text-sm">Fathername</span>
+                </label>
+
+                <label class="inline-flex items-center">
+                  <input
+                    type="radio"
+                    name="search-by"
+                    value="gender"
+                    class="form-radio h-4 w-4"
+                  />
+                  <span class="ml-2 text-sm">Gender</span>
+                </label>
+
+                <label class="inline-flex items-center">
+                  <input
+                    type="radio"
+                    name="search-by"
+                    value="date"
+                    class="form-radio h-4 w-4"
+                  />
+                  <span class="ml-2 text-sm">Date</span>
+                </label>
+              </div>
+            </div>
+            <div
+              class="search-by-field py-1 text-left flex flex-col md:flex-row justify-evenly"
+            >
+              <div class="search-options px-2 py-1 space-y-1 bg-gray-100">
+                <div>
+                  <input
+                    type="text"
+                    placeholder="name"
+                    name="name"
+                    class="px-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="fathername"
+                    name="fathername"
+                    class="px-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+                <div>
+                  <select
+                    class="genderField px-2 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="" disabled selected hidden></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+                <div class="inline-block dateField">
+                  <input
+                    type="text"
+                    placeholder="from(yyyy/mm/dd)"
+                    name="fromDate"
+                    class="px-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <span class="block text-center">To</span>
+                  <input
+                    type="text"
+                    placeholder="to(yyyy/mm/dd)"
+                    name="toDate"
+                    class="px-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              </div>
+              <div class="search-button flex items-center justify-center">
+                <button
+                  class="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded"
+                >
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- display students -->
+      <div class="search-result"></div>
+    </div>
+
+    <script src="show-students.js"></script>
+  </body>
+</html>
