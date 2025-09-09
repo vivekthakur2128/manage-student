@@ -17,51 +17,62 @@ document.querySelector(".radio-buttons").addEventListener("click", (event) => {
   }
 });
 
-document
-  .querySelector(".search-by-radio-buttons")
-  .addEventListener("click", (event) => {
+document.querySelector(".search-by-radio-buttons").addEventListener("click", (event) => {
     let searchByField = document.querySelector(".search-by-field");
     searchByField.classList.remove("disabled-div");
-
     // check which search radio button is checked
     let checkedSearchButton = event.target.value;
-    console.log(checkedSearchButton);
-    enableSearchField(checkedSearchButton);
+    enableDisableSearchField(checkedSearchButton);
   });
 
-function enableSearchField(checkedSearchButton) {
-  let searchByName = document.querySelector('input[name="name"]');
-  let searchByFathername = document.querySelector('input[name="fathername"]');
-  let searchByGender = document.querySelector(".genderField");
-  let searchByDate = document.querySelector(".dateField");
+function enableDisableSearchField(checkedSearchButton) {
+  let searchByName = document.querySelector('#name');
+  let searchByFathername = document.querySelector('#fathername');
+  let searchByGender = document.querySelector("#gender");
+  let searchByDate = document.querySelector("#date");
 
-  if (checkedSearchButton == "name") {
-    searchByName.classList.remove("disabled-div");
-    searchByFathername.classList.add("disabled-div");
-    searchByGender.classList.add("disabled-div");
-    searchByDate.classList.add("disabled-div");
-  }
-  if (checkedSearchButton == "fathername") {
-    searchByFathername.classList.remove("disabled-div");
-    searchByName.classList.add("disabled-div");
-    searchByGender.classList.add("disabled-div");
-    searchByDate.classList.add("disabled-div");
-  }
-  if (checkedSearchButton == "gender") {
-    searchByGender.classList.remove("disabled-div");
-    searchByName.classList.add("disabled-div");
-    searchByFathername.classList.add("disabled-div");
-    searchByDate.classList.add("disabled-div");
-  }
-  if (checkedSearchButton == "date") {
-    searchByDate.classList.remove("disabled-div");
-    searchByName.classList.add("disabled-div");
-    searchByFathername.classList.add("disabled-div");
-    searchByGender.classList.add("disabled-div");
-  }
-
-  // console.log(searchByName);
-  // console.log(searchByFathername);
-  // console.log(searchByGender);
-  // console.log(searchByDate);
+  let searchFields = [searchByName, searchByFathername, searchByGender, searchByDate];
+  searchFields.forEach(searchField => {
+    if(searchField.id === checkedSearchButton){
+        searchField.classList.remove("disabled-div");
+    }
+    else{
+        searchField.classList.add("disabled-div");
+    }
+  });
 }
+
+// when show all students button is clicked
+document.querySelector(".showStudentsBtn").addEventListener("click", (event) => {
+    let showAllStudents = event.target.name;
+    let dataToSend = [showAllStudents];
+    sendButtonValueToPhp(dataToSend);
+  });
+// when search students by fields
+document.querySelector("#searchBtn").addEventListener("click", (event) => {
+    let allsearcheFIelds = document.querySelector('.search-by-field').querySelectorAll('input');
+    allsearcheFIelds.forEach(searchField => {
+        let searchFieldName = searchField.name;
+        let searchFieldData = searchField.value.trim();
+        if (searchFieldData) {
+          let dataToSend = [searchFieldName, searchFieldData];
+          sendButtonValueToPhp(dataToSend);
+          return;
+        }
+      });
+  });
+
+// send data to php file and receive response from php file
+async function sendButtonValueToPhp(dataToSend){
+    try {
+        const response = await fetch('show-students.php', {
+            method: 'POST',
+            body: JSON.stringify({data: dataToSend})
+        });
+    const result = await response.json(); 
+    console.log(result);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+

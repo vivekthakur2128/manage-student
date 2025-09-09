@@ -42,10 +42,16 @@
           </div>
         </div>
         <!-- read student -->
-        <div class="read-students bg-gray-400 space-x-1 flex flex-col sm:flex-row">
-          <div class="show-all-students disabled-div rounded bg-gray-200 py-1 sm:w-1/2 flex items-center justify-center">
+        <div
+          class="read-students bg-gray-400 space-x-1 flex flex-col sm:flex-row"
+        >
+          <div
+            class="show-all-students disabled-div rounded bg-gray-200 py-1 sm:w-1/2 flex items-center justify-center"
+          >
             <button
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded"
+              type="button"
+              name="showAllStudents"
+              class="showStudentsBtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded"
             >
               Show all students
             </button>
@@ -102,49 +108,43 @@
               class="search-by-field py-1 text-left flex flex-col md:flex-row justify-evenly"
             >
               <div class="search-options px-2 py-1 space-y-1 bg-gray-100">
-                <div>
+                <div id="name">
                   <input
                     type="text"
                     placeholder="name"
                     name="name"
-                    class="px-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    class="px-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 uppercase"
                   />
                 </div>
-                <div>
+                <div id="fathername">
                   <input
                     type="text"
                     placeholder="fathername"
                     name="fathername"
-                    class="px-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    class="px-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 uppercase"
                   />
                 </div>
-                <div>
-                  <select
-                    class="genderField px-2 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="" disabled selected hidden></option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                  </select>
-                </div>
-                <div class="inline-block dateField">
+                <div id="gender">
                   <input
                     type="text"
-                    placeholder="from(yyyy/mm/dd)"
-                    name="fromDate"
-                    class="px-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="male/female"
+                    name="gender"
+                    class="px-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 uppercase"
                   />
-                  <span class="block text-center">To</span>
+                </div>
+                <div id="date">
                   <input
                     type="text"
-                    placeholder="to(yyyy/mm/dd)"
-                    name="toDate"
-                    class="px-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="from-to(yyyy-mm-dd)"
+                    name="date"
+                    class="px-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 uppercase"
                   />
                 </div>
               </div>
               <div class="search-button flex items-center justify-center">
                 <button
+                  type="button"
+                  id="searchBtn"
                   class="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded"
                 >
                   Search
