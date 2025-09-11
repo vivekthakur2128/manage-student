@@ -16,10 +16,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $json_data = file_get_contents("php://input");
     $data = json_decode($json_data, true);
 
+    // get mysql table header
+    $tbHeader = "SHOW COLUMNS FROM students_info";
+    $header = $conn->query($tbHeader);
+    if ($header->num_rows > 0) {
+    while ($headerRow = $header->fetch_assoc()) {
+            $tableHeader[] = $headerRow['Field'];
+        }
+    }
     if (isset($data['data'])) {
         $receivedDataArray = $data['data'];
         if (count($receivedDataArray) === 1) {
-            $sql    = "SELECT * FROM students_info";
+            $sql = "SELECT * FROM students_info";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while ($tableRow = $result->fetch_assoc()) {
@@ -47,13 +55,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt->execute();
             $result = $stmt->get_result();
             if ($result->num_rows > 0) {
+                array_shift($tableHeader); //remove id column
                 while ($tableRow = $result->fetch_assoc()) {
+                    array_shift($tableRow); // remove id column data
                     $allRowsData[] = $tableRow;
                 }
             }
             $stmt->close();
         }
-        echo json_encode($allRowsData);
+        $studentsArray = [$tableHeader, $allRowsData];
+        echo json_encode($studentsArray);
         
     } else {
         echo json_encode(["No matching data in record"]);
