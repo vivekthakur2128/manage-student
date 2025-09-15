@@ -1,7 +1,10 @@
 body{
     font-family: cursive;
 }
-.disabled-div {
+.disabled-element {
   pointer-events: none; 
   opacity: 0.2;
+}
+.search-students-container{
+  margin-top: 0px !important;
 }

@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="../tailwind.min.css">
     <link rel="stylesheet" href="read-students.css">
 </head>
-<body class="bg-gray-300 min-h-screen p-2">
-    <h1 class="text-center font-bold text-2xl">Show/Search Students</h1>
+<body class="bg-gray-200 min-h-screen p-2">
+    <h1 class="text-center font-bold text-3xl">Show/Search Students</h1>
     <div class="main-container text-center p-4 bg-gray-100 rounded">
         <div class="show-search-buttons flex justify-between bg-blue-100 rounded">
             <button id="showStudents" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-2">
@@ -18,14 +18,14 @@
                 Search Students
             </button>
         </div>
-        <div class="show-search-container flex justify-center items-center flex-col sm:flex-row bg-yellow-100 p-2 space-y-2 sm:space-x-2 rounded">
-            <div class="show-students-container disabled-div bg-green-300 w-full sm:w-1/2  rounded">
-                <button id="showStudentsButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-2">
+        <div class="show-search-container flex justify-center items-stretch flex-col sm:flex-row bg-gray-400 p-2 space-y-2 sm:space-x-2 rounded">
+            <div class="show-students-container disabled-element flex-1 flex items-center justify-center bg-white w-full sm:w-1/2 rounded">
+                <button id="showAllStudentsButton" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-2">
                 Show All Students
                 </button>
             </div>
-            <div class="search-students-container disabled-div bg-red-300 p-2 w-full sm:w-1/2 rounded space-y-1">
-                <div class="search-by-radio-buttons text-left bg-gray-300 rounded">
+            <div class="search-students-container disabled-element flex-1 bg-white p-2 w-full sm:w-1/2 rounded space-y-1 mt-5">
+                <div class="search-by-radio-buttons text-left bg-gray-200 rounded">
                     <p>Search By :</p>
                     <input type="radio" id="searchByName" name="searchOption" value="name">
                     <label for="searchByName">Name</label>
@@ -42,14 +42,15 @@
                         <input type="text" id="fathername" placeholder="Fathername" class="border border-gray-400 rounded px-2 uppercase">
                         <input type="text" id="gender" placeholder="Male/Female" class="border border-gray-400 rounded px-2 uppercase">
                         <input type="text" id="month" placeholder="YYYY-MM" class="border border-gray-400 rounded px-2 uppercase">
-                        <button id="searchButton" class="w-1/2 bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-4 rounded">
+                        <button id="searchButton" type="button" class="w-1/2 bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-4 rounded">
                             Search
                         </button>
                     </form>
                 </div>
             </div>
         </div>
-        
+        <h1 class="search-result-heading font-bold text-2xl mt-4 hidden">Search Result Table</h1>
+        <div class="result-table-container bg-gray-100 mt-2"></div>
     </div>
 
     <script src="read-students.js"></script>
