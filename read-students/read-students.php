@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $tbHeader = "SHOW COLUMNS FROM students_info";
         $header = $conn->query($tbHeader);
         if ($header->num_rows > 0) {
-        while ($headerRow = $header->fetch_assoc()) {
+            while ($headerRow = $header->fetch_assoc()) {
                 $tableHeader[] = $headerRow['Field'];
             }
         }
