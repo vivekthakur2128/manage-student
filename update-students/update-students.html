@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update students</title>
+    <link rel="stylesheet" href="../tailwind.min.css">
+    <link rel="stylesheet" href="update-students.css">
+</head>
+<body>
+    <div class="main-container bg-blue-100 p-2">
+        <h1 class="text-center font-semibold text-3xl">Update Students</h1>
+        <form class="border bg-gray-200 mt-2">
+            <div class="search-by-container flex flex-col sm:flex-row items-center justify-around">
+                <div class="name-container bg-gray-400 px-2 pb-2 rounded">
+                    <label for="name" class="block">Student Name</label>
+                    <input type="text" name="name" id="studentName" class="rounded pl-1" placeholder="Enter Student Name">
+                </div>
+                <div class="or-container px-2 pb-2 flex items-center text-2xl font-semibold">
+                    <h1>OR</h1>
+                </div>
+                <div class="fathername-container bg-gray-400 px-2 pb-2 rounded">
+                    <label for="fathername" class="block">Father Name</label>
+                    <input type="text" name="fathername" id="fathername"  class="rounded pl-1" placeholder="Enter Father's Name">
+                </div>
+            </div>
+            <div class="search-button-container text-center">
+                <button id="searchStudents" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-2">
+                Search Students
+                </button>
+            </div>
+        </form>
+        <div class="table-container text-center">
+            <h1 class="search-result-heading font-bold text-2xl mt-4 hidden">Search Result Table</h1>
+            <div class="result-table-container bg-gray-100 mt-2"></div>
+        </div>
+        
+    </div>
+
+    <script src="update-students.js"></script>
+</body>
+</html>
